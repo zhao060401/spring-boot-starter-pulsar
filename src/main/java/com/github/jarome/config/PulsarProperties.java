@@ -38,16 +38,6 @@ public class PulsarProperties {
     private String oauth2CredentialsUrl = null;
     private String oauth2Audience = null;
 
-    /**
-     * Minimum consumer thread number
-     */
-    private int consumeThreadMin = 20;
-
-    /**
-     * Max consumer thread number
-     */
-    private int consumeThreadMax = 20;
-
     public String getServiceUrl() {
         return serviceUrl;
     }
@@ -262,21 +252,5 @@ public class PulsarProperties {
 
     public void setOauth2Audience(String oauth2Audience) {
         this.oauth2Audience = oauth2Audience;
-    }
-
-    public int getConsumeThreadMin() {
-        return consumeThreadMin;
-    }
-
-    public void setConsumeThreadMin(int consumeThreadMin) {
-        this.consumeThreadMin = consumeThreadMin;
-    }
-
-    public int getConsumeThreadMax() {
-        return consumeThreadMax;
-    }
-
-    public void setConsumeThreadMax(int consumeThreadMax) {
-        this.consumeThreadMax = consumeThreadMax;
     }
 }
