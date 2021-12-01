@@ -5,25 +5,11 @@
 
 ## 快速开启
 ### 添加maven依赖
-
-### Add Maven dependency
+TODO
 #### 添加仓库地址到pom.xml里
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
+
 #### 添加依赖
-```xml
-<dependency>
-    <groupId>com.github.zhao060401</groupId>
-    <artifactId>spring-boot-starter-pulsar</artifactId>
-    <version>6d45847c78</version>
-</dependency>
-```
+
 
 ### 创建消息类
 ```java
