@@ -5,23 +5,10 @@ Mainly based on Pulsar official SDK, adapted to Spring Boot. Refer to[rocketmq-s
 
 ## Quick Start
 ### Add Maven dependency
+TODO
 #### Add the JitPack repository to your build file
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
+
 #### Add the dependency
-```xml
-<dependency>
-    <groupId>com.github.zhao060401</groupId>
-    <artifactId>spring-boot-starter-pulsar</artifactId>
-    <version>6d45847c78</version>
-</dependency>
-```
 
 ### Create a message class
 ```java
