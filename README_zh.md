@@ -1,14 +1,14 @@
 # Spring Boot starter for [Apache Pulsar](https://pulsar.apache.org/)
 
-## Introduce
-Mainly based on Pulsar official SDK, adapted to Spring Boot. Refer to[rocketmq-spring](https://github.com/apache/rocketmq-spring) 和 [pulsar-java-spring-boot-starter](https://github.com/majusko/pulsar-java-spring-boot-starter) Thanks
+## 介绍
+主要基于Pulsar官方SDK，适配Spring Boot调用方式修改。参考[rocketmq-spring](https://github.com/apache/rocketmq-spring) 和 [pulsar-java-spring-boot-starter](https://github.com/majusko/pulsar-java-spring-boot-starter) 感谢
 
-## Quick Start
-### Add Maven dependency
+## 快速开启
+### 添加maven依赖
 
 todo
 
-### Create a message class
+### 创建消息类
 ```java
 public class ConsumerData {
     private Integer id;
@@ -25,7 +25,7 @@ public class ConsumerData {
     }
 }
 ```
-### Create producer
+### 创建生产者
 ``` java
 @Autowired
 PulsarTemplate pulsarTemplate;
@@ -36,7 +36,7 @@ public void sendMsg6() {
     MessageId send = pulsarTemplate.send(topic, PulsarSerialization.STRING, data);
 }
 ```
-### Create consumers
+### 创建消费者
 ```java
 @Service
 @PulsarMessageListener(topic = "topic-six", maxRedeliverCount = 3)
@@ -48,14 +48,14 @@ public class ConsumersTest6 implements PulsarListener<ConsumerData> {
     }
 }
 ```
-### Minimal Configuration
+### 必须配置
 ```properties
 pulsar.service-url=pulsar://127.0.0.1:6650
 pulsar.namespace=pulsar_test
 pulsar.tenant=test
 ```
-## Configuration
-### Default configuration
+## 配置
+### 默认配置
 ```properties
 #PulsarClient
 pulsar.service-url=pulsar://localhost:6650
@@ -77,7 +77,7 @@ pulsar.consumer.default.ack-timeout-ms=3000
 pulsar.consume-thread-min=20
 pulsar.consume-thread-max=20
 ```
-### TLS connection configuration
+### TLS链接配置
 ```properties
 pulsar.service-url=pulsar+ssl://localhost:6651
 pulsar.tlsTrustCertsFilePath=/etc/pulsar/tls/ca.crt
@@ -93,7 +93,7 @@ pulsar.tlsTrustStoreType=JKS
 pulsar.useKeyStoreTls=false
 ```
 
-### Pulsar client authentication (Only one of the options can be used)
+### Pulsar client 授权 (不会同时生效)
 ```properties
 # TLS
 pulsar.tls-auth-cert-file-path=/etc/pulsar/tls/cert.cert.pem
@@ -108,12 +108,12 @@ pulsar.oauth2-credentials-url=file:/path/to/file
 pulsar.oauth2-audience=https://broker.example.com
 ```
 
-## Tips
+## 补充
 ### PulsarMessageListener
-- Can read the configuration of the configuration file,for example: consumerName = "${my.custom.consumer.name}"
-- topic can set to regex,for example "my_test.*",The corresponding default dead letter queue is defined as {TopicName}-{Subscription}-DLQ,Because it is set to regex, At this time, consumers will also receive messages from the private message queue,will cause constant retries. The default dead letter has been defined as: deadLetter_{TopicName2}_{Subscription}-DLQ .This TopicName2 remove all" \* " or " .\* "
-- Consumer processing is in the thread pool by default,The official default is that a consumer is always in a thread, refer to numListenerThreads explanation is  "For a given consumer, the listener is always invoked from the same thread to ensure ordering. If you want multiple threads to process a single topic, you need to create a shared subscription and multiple consumers for this subscription", Now the default thread pool is 20, which improves consumer processing efficiency
+- 可以读取配置文件的配置，比如设置为consumerName = "${my.custom.consumer.name}"
+- topic可配置为匹配类型，比如"my_test.*",对应默认死信队列定义为{TopicName}-{Subscription}-DLQ，因为设置为匹配，此时消费者也会收到私信队列的消息，将会导致不停的重试。 已将默认死信定义为 deadLetter_{TopicName2}_{Subscription}-DLQ。此TopicName2中移除了" \* "与" .\* "
+- 消费者处理默认在线程池中，官方默认一个消费者永远在一个线程中，参考"numListenerThreads"字段中的解释" For a given consumer, the listener is always invoked from the same thread to ensure ordering. If you want multiple threads to process a single topic, you need to create a shared subscription and multiple consumers for this subscription"。 现在默认线程池20,提高消费者处理效率
 ### PulsarTemplate
-- This is excessive packaging,Can directly reference PulsarClient for processing
-- Did not extends AbstractMessageSendingTemplate, I do not know how to deal with it temporarily
+- 这个过度封装开发，可直接引用PulsarClient进行处理
+- 没有继承AbstractMessageSendingTemplate，暂不知道怎么处理
 
