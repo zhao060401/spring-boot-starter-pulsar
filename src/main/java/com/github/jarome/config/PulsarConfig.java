@@ -4,10 +4,10 @@ import com.github.jarome.annotation.PulsarMessageListener;
 import com.github.jarome.common.ThreadFactoryImpl;
 import com.github.jarome.error.PulsarException;
 import com.github.jarome.service.PulsarListener;
+import com.github.jarome.util.CheckUtils;
 import com.github.jarome.util.SchemaUtils;
 import com.github.jarome.util.UrlBuildService;
 import org.apache.pulsar.client.api.*;
-import org.apache.pulsar.shade.com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.AopProxyUtils;
@@ -279,9 +279,9 @@ public class PulsarConfig implements ApplicationContextAware, SmartInitializingS
         SubscriptionType subscriptionType = Arrays.stream(annotation.subscriptionType())
                 .findFirst().orElse(null);
 
-        if (subscriptionType == null && Strings.isNullOrEmpty(consumerProperties.getSubscriptionType())) {
+        if (subscriptionType == null && CheckUtils.isEmpty(consumerProperties.getSubscriptionType())) {
             subscriptionType = SubscriptionType.Shared;
-        } else if (subscriptionType == null && !Strings.isNullOrEmpty(consumerProperties.getSubscriptionType())) {
+        } else if (subscriptionType == null && CheckUtils.isNotEmpty(consumerProperties.getSubscriptionType())) {
             try {
                 subscriptionType = SubscriptionType.valueOf(consumerProperties.getSubscriptionType());
             } catch (IllegalArgumentException exception) {
