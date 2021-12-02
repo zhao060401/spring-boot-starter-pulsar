@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
  * org.apache.rocketmq.spring.autoconfigure.ListenerContainerConfiguration
  */
 @Configuration
-@DependsOn({"pulsarClient", "pulsarProperties", "pulsarMessageConverter"})
+@DependsOn({"pulsarClient", "pulsarProperties", "pulsarMessageConverter", "urlBuildService"})
 public class PulsarConfig implements ApplicationContextAware, SmartInitializingSingleton, EmbeddedValueResolverAware {
     private static final Logger log = LoggerFactory.getLogger(PulsarConfig.class);
 
