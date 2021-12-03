@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class UrlBuildService {
 
     @Value("${pulsar.consumerNameDelimiter:}")

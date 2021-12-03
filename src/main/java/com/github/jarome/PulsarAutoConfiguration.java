@@ -1,6 +1,8 @@
-package com.github.jarome.config;
+package com.github.jarome;
 
 import com.github.jarome.annotation.PulsarTemplate;
+import com.github.jarome.config.ConsumerProperties;
+import com.github.jarome.config.PulsarProperties;
 import com.github.jarome.error.PulsarException;
 import com.github.jarome.util.CheckUtils;
 import com.github.jarome.util.UrlBuildService;
