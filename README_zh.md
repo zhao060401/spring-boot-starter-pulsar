@@ -10,6 +10,10 @@ TODO
 
 #### 添加依赖
 
+### 条件
+* JDK 1.8 and above 
+* Maven 3.0 and above
+* Spring Boot 2.0 and above
 
 ### 创建消息类
 ```java
