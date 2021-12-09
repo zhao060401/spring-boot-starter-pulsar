@@ -5,7 +5,7 @@ import com.github.jarome.constant.PulsarSerialization;
 import com.github.jarome.test.data.ConsumerData;
 import com.github.jarome.test.data.ConsumerInfo;
 import org.apache.pulsar.client.api.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +16,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
+ * If you want to run the test,You need to open the annotation @SpringBootApplication in SpringBootStarterPulsarApplication
+ *
  * @author zhaojianqiang
  * @date 2021/11/29 18:18
  */
@@ -96,6 +98,7 @@ public class ProductTest {
 
     @Autowired
     PulsarTemplate pulsarTemplate;
+
     @Test
     public void sendMsg6() {
         String topic = "topic-six";
