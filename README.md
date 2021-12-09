@@ -13,7 +13,7 @@ TODO
 ### Prerequisites
 * JDK 1.8 and above 
 * Maven 3.0 and above
-* Spring Boot 2.0 and above
+* Spring Boot 2.1.6 and above
 
 ### Create a message class
 ```java
