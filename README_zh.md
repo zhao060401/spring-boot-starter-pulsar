@@ -81,8 +81,8 @@ pulsar.tenant=public
 #Consumer
 pulsar.consumer.default.dead-letter-policy-max-redeliver-count=-1
 pulsar.consumer.default.ack-timeout-ms=3000
-pulsar.consume-thread-min=20
-pulsar.consume-thread-max=20
+pulsar.consumer.default.consume-thread-min=20
+pulsar.consumer.default.consume-thread-max=20
 ```
 ### TLS链接配置
 ```properties
